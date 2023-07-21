@@ -7,6 +7,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>comeup-devis-maker</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --selected: #f4e80086;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #ddd;
+
+        }
+
+        /* cells border */
+
+        td,
+        th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.81);
+            min-height: 45px;
+        }
+
+        th {
+            background-color: black;
+            color: white;
+        }
+
+        td:nth-child(1),
+        th:nth-child(1) {
+            text-align: left;
+        }
+
+        .opt {
+            cursor: pointer;
+        }
+
+        .opt:hover {
+            background-color: var(--selected);
+        }
+
+        .opt.selected {
+            background-color: var(--selected);
+        }
+
+        /* circle black checkbox */
+
+        .checkmark {
+            position: relative;
+            display: block;
+            width: 25px;
+            height: 25px;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+
+        /* checkmark */
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* show checkmark */
+
+        .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+            display: block;
+        }
+
+        /* Hide the default checkbox */
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        /* Style the custom checkbox */
+        label {
+            display: inline-block;
+        }
+
+
+
+        /* Optional: Add a checkmark inside the checked checkbox */
+        input[type="checkbox"]:checked+label::after {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 12px;
+            border: solid #000;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            margin-left: 12px;
+        }
+
+        tr>td:nth-child(1) {
+            display: flex;
+            align-items: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,8 +124,14 @@
             Générer le devis de &nbsp; <span id="total_price">0</span>&nbsp;€
         </button>
     </div>
-    <div id="options"></div>
-    <script src="content.js"></script>
+    <table id="options">
+        <tr>
+            <th>Options</th>
+            <th>Délai</th>
+            <th>Prix</th>
+        </tr>
+        <table />
+        <script src="content.js"></script>
 </body>
 
 </html>
