@@ -140,18 +140,21 @@ function get_all_opts() {
       price = "",
       delay = elm.querySelector(".extra-delay").innerText.match(/\d{1,}/);
     if (index == 0) {
-      title = el.replace(elm.querySelector(".extra-delay").innerText, "");
+      title = el.replace(elm.querySelector(".extra-delay").innerText.trim(), "");
       price = elm.parentElement
         .querySelector(".extra-price")
         .innerText.split("€")[0];
     } else {
-      title = el.split("+")[0];
+      title = el
+        .split("+")[0]
+        .replace(elm.querySelector(".extra-delay").innerText.trim(), "");
       // price = el.split("+")[1].split("€")[0];
       price = elm.parentElement
         .querySelector(".extra-price")
         .innerText.split("+")[1]
         .split("€")[0];
     }
+    title = title.trim();
     // console.log(title, price);
     arr.push(title + separator + price + separator + delay);
   });
